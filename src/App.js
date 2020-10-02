@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Item from './Item'
 import Counter from './Counter';
@@ -12,19 +12,20 @@ function App() {
   const [speed, setSpeed] = useState(1000)
   const [items,] = useState([{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }])
 
-  const intervalRef = useRef()
+  // const intervalRef = useRef()
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRandomIndex(getRandomImageIndex())
     }, speed)
+    console.log(speed);
 
-    intervalRef.current = interval
+    // intervalRef.current = interval
 
     return () => {
-      clearInterval(intervalRef.current)
+      clearInterval(interval)
     }
-  })
+  }, [count])
 
   let getDog = () => {
     let audio = new Audio(woof)
